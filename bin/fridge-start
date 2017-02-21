@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+import fridge from '../'
+
+// if (!existsSync(join(dir, 'fridge.config.js'))) {
+//   console.log('> No Fridge configuration found. Please create `fridge.config.js` first.')
+//   process.exit(1)
+// }
+
+// const config = require(join(dir, 'fridge.config'))
+const config = {}
+
+fridge(config).start()

@@ -1,9 +1,21 @@
 {
-  "name": "fridge",
+  "name": "fridge-next",
   "version": "0.0.1",
   "description": "Build Fridge apps using next.js",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "config.js",
+    "withFridge.js"
+  ],
+  "bin": {
+    "fridge": "./dist/bin/fridge.js"
+  },
   "scripts": {
+    "prepublish": "npm run clean && npm run build",
+    "clean": "rm -rf dist/* && mkdir -p dist",
+    "build": "babel lib bin/* -d dist",
+    "start": "babel lib bin/* -d dist -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,9 +29,15 @@
   },
   "homepage": "https://github.com/fridge-cms/fridge.js#readme",
   "dependencies": {
+    "cross-spawn": "^5.0.1",
     "express": "^4.14.1",
     "fridge_api": "beta",
     "lru-cache": "^4.0.2",
     "next": "beta"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }

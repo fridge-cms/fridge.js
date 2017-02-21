@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+// get all pages
+// (look in /pages)
+// (get array of paths from external func)
+
+// render all pages to .html
+// copy static dir
+// generate .js bundle
