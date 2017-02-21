@@ -11,7 +11,7 @@ $ npm install --save fridge-next react react-dom
 
 Add a script to your package.json like this:
 
-```
+```json
 {
   "scripts": {
     "dev": "fridge start"
@@ -21,7 +21,7 @@ Add a script to your package.json like this:
 
 Add a fridge API configuration to `next.config.js`:
 
-```
+```js
 const config = require('fridge-next/config')
 
 module.exports = config({
@@ -35,7 +35,7 @@ module.exports = config({
 
 A higher-order component is provided to include the Fridge API client both server and client side. Fridge will be included in the context of `getInitialProps` and as a prop to the component.
 
-```
+```js
 import React from 'react'
 import withFridge from 'fridge-next/withFridge'
 
