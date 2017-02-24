@@ -33,7 +33,7 @@ module.exports = config({
 
 ### Usage
 
-A higher-order component is provided to include the Fridge API client both server and client side. Fridge will be included in the context of `getInitialProps` and as a prop to the component.
+Wrap top-level components with the `withFridge` higher-order component. This will include the Fridge API client both server and client side. Fridge will also be included in the context of `getInitialProps` and as a prop of the component.
 
 ```js
 import React from 'react'
@@ -41,7 +41,7 @@ import withFridge from 'fridge-next/withFridge'
 
 class Page extends React.Component {
   static async getInitialProps ({ fridge }) {
-    const homepageContent = fridge.get('content/homepage')
+    const homepageContent = fridge.get('type/homepage')
 
     return { homepageContent }
   }
@@ -52,7 +52,38 @@ class Page extends React.Component {
     return <h1>{content.title}</h1>
   }
 }
+```
 
+For any other components that need access to fridge data, there is another higher-order component `connectFridge`. Provide an `async` that returns props and they will be provided to the component.
+
+```js
+import React from 'react'
+import connectFridge from 'fridge-next/connectFridge'
+
+const Footer = ({settings}) =>
+  <footer>
+    <p>{settings.content.copyright}</p>
+  </footer>
+
+export default connectFridge(async ({fridge, props}) => {
+  return {
+    settings: await fridge.get('type/settings')
+  }
+})(Footer)
+```
+
+### Routes
+
+In order to provide custom/parameterized routing to pages, provide a `routes` hash in `next.config.js`. Keys represent the route and values represent the next.js page path to render. Any route parameters will be passed into the `query` hash in the `getInitialProps` context.
+
+```js
+module.exports = {
+  fridge: {...},
+  routes: {
+    '/:page': '/page',
+    '/blog/:slug': '/blog'
+  }
+}
 ```
 
 ### Next.js

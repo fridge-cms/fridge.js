@@ -1,11 +1,12 @@
 {
   "name": "fridge-next",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Build Fridge apps using next.js",
   "main": "./dist/index.js",
   "files": [
     "dist",
     "config.js",
+    "connectFridge.js",
     "withFridge.js"
   ],
   "bin": {
@@ -32,9 +33,11 @@
     "cross-spawn": "^5.0.1",
     "express": "^4.14.1",
     "fridge_api": "beta",
+    "hoist-non-react-statics": "^1.2.0",
     "lru-cache": "^4.0.2",
     "next": "beta",
-    "next-route": "^1.0.2"
+    "next-route": "^1.0.2",
+    "react-tree-walker": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
