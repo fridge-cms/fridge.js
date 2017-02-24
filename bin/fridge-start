@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 
+import next from 'next'
+import { createServer } from 'http'
 import fridge from '../'
 
-// if (!existsSync(join(dir, 'fridge.config.js'))) {
-//   console.log('> No Fridge configuration found. Please create `fridge.config.js` first.')
-//   process.exit(1)
-// }
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({dev})
 
-// const config = require(join(dir, 'fridge.config'))
-const config = {}
-
-fridge(config).start()
+app.prepare().then(() => {
+  createServer(fridge(app)).listen(3000, err => {
+    if (err) throw err
+    if (!process.env.NOW) {
+      console.log('> Ready on http://localhost:3000')
+    }
+  })
+})
