@@ -11,6 +11,7 @@ module.exports = (userConfig) => {
   process.env.FRIDGE_SECRET = client_secret // eslint-disable-line
 
   return {
+    routes: userConfig.routes || null,
     webpack: (config, ...args) => {
       if (userConfig.webpack) {
         config = userConfig.webpack(config, ...args)
