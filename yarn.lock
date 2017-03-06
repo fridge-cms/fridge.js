@@ -2238,9 +2238,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-next-route@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/next-route/-/next-route-1.0.2.tgz#7cca66e722ecc5597c169988509170d99778b92a"
+next-route@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/next-route/-/next-route-2.0.0.tgz#dc06889792edd7c973206e95c02b45de3bf623dc"
   dependencies:
     object-assign "^4.1.1"
     path-to-regexp "^1.7.0"

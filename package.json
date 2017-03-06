@@ -36,7 +36,7 @@
     "hoist-non-react-statics": "^1.2.0",
     "lru-cache": "^4.0.2",
     "next": "beta",
-    "next-route": "^1.0.2",
+    "next-route": "^2.0.0",
     "react-tree-walker": "^1.0.0"
   },
   "devDependencies": {
