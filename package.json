@@ -35,9 +35,9 @@
     "fridge": "^1.0.0",
     "hoist-non-react-statics": "^1.2.0",
     "lru-cache": "^4.0.2",
-    "next": "beta",
+    "next": "^2.0.1",
     "next-route": "^2.0.0",
-    "react-tree-walker": "^1.0.0"
+    "react-tree-walker": "^2.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
