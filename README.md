@@ -1,5 +1,8 @@
-# fridge.js
-Build Fridge apps using next.js
+<h1 align="center">Fridge.js</h1>
+
+<div align="center">
+  Build <a href="https://www.fridgecms.com">Fridge</a> powered apps using next.js
+</div>
 
 ## How to use
 
