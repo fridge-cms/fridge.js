@@ -3,7 +3,7 @@
 import { join } from 'path'
 import { spawn } from 'cross-spawn'
 
-const cmd = process.argv[2] || 'start'
+const cmd = process.argv[2] || process.env.NODE_ENV === 'production' ? 'start' : 'dev'
 const bin = join(__dirname, 'fridge-' + cmd + '.js')
 
 const startProcess = () => {
