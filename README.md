@@ -50,11 +50,13 @@ class Page extends React.Component {
   }
 
   render () {
-    const { homepageContent: { content }} = this.props
+    const {homepageContent: { content }} = this.props
 
     return <h1>{content.title}</h1>
   }
 }
+
+export default withFridge(Page)
 ```
 
 For any other components that need access to fridge data, there is another higher-order component `connectFridge`. Provide an `async` that returns props and they will be provided to the component.
