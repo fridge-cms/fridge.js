@@ -17,7 +17,9 @@ Add a script to your package.json like this:
 ```json
 {
   "scripts": {
-    "dev": "fridge start"
+    "dev": "fridge",
+    "build": "fridge build",
+    "start": "NODE_ENV=production fridge"
   }
 }
 ```
@@ -25,13 +27,11 @@ Add a script to your package.json like this:
 Add a fridge API configuration to `next.config.js`:
 
 ```js
-const config = require('fridge-next/config')
-
-module.exports = config({
+module.exports = {
   fridge: {
     client_id: 'pk_xxxxxxxxxx'
   }
-})
+}
 ```
 
 ### Usage
