@@ -36,7 +36,8 @@
     "next": "^4.2.1",
     "next-route": "^2.0.0",
     "prop-types": "^15.6.0",
-    "react-tree-walker": "^2.1.3"
+    "react-tree-walker": "^2.1.3",
+    "serve": "^6.4.4"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
