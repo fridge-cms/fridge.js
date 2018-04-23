@@ -3564,9 +3564,9 @@ react-hot-loader@4.0.0:
     prop-types "^15.6.0"
     shallowequal "^1.0.2"
 
-react-tree-walker@^2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/react-tree-walker/-/react-tree-walker-2.1.3.tgz#e781dd7ba9b5c50cc6300e3388b490f2b43b6295"
+react-tree-walker@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-tree-walker/-/react-tree-walker-4.0.2.tgz#a50df477ba9f0559584d19944b669fefa2a5669f"
 
 react@^16.2.0:
   version "16.2.0"
