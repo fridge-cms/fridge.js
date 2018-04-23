@@ -30,10 +30,10 @@
   "homepage": "https://github.com/fridge-cms/fridge.js#readme",
   "dependencies": {
     "cross-spawn": "^5.0.1",
-    "fridge": "^1.0.0",
+    "fridge": "^2.0.4-beta",
     "hoist-non-react-statics": "^1.2.0",
     "lru-cache": "^4.0.2",
-    "next": "^4.2.1",
+    "next": "^5.1.0",
     "next-route": "^2.0.0",
     "prop-types": "^15.6.0",
     "react-tree-walker": "^2.1.3",
