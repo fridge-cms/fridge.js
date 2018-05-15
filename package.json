@@ -33,7 +33,7 @@
     "fridge": "^2.0.4-beta",
     "hoist-non-react-statics": "^1.2.0",
     "lru-cache": "^4.0.2",
-    "next": "^5.1.0",
+    "next": "^6.0.2",
     "next-route": "^2.0.0",
     "prop-types": "^15.6.0",
     "react-tree-walker": "^4.0.2",
@@ -41,7 +41,10 @@
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
   }
 }
