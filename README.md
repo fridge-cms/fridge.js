@@ -36,57 +36,68 @@ module.exports = {
 
 ### Usage
 
-Wrap top-level components with the `withFridge` higher-order component. This will include the Fridge API client both server and client side. Fridge will also be included in the context of `getInitialProps` and as a prop of the component.
+Create a custom `_app.js`.
 
 ```js
-import React from 'react'
-import withFridge from 'fridge-next/withFridge'
+// pages/_app.js
 
-class Page extends React.Component {
-  static async getInitialProps ({ fridge }) {
-    const homepageContent = fridge.get('type/homepage')
-
-    return { homepageContent }
-  }
-
-  render () {
-    const {homepageContent: { content }} = this.props
-
-    return <h1>{content.title}</h1>
-  }
-}
-
-export default withFridge(Page)
+import { FridgeApp } from 'fridge-next'
+export default FridgeApp
 ```
 
-For any other components that need access to fridge data, there is another higher-order component `connectFridge`. Provide an `async` that returns props and they will be provided to the component.
+This will provide your page components a `fridge` client in `getInitialProps` context as well as a prop of the component.
+
+#### HOC
+
+There is an HOC to wrap non-page components. `withFridge` accepts a promise function that returns props to be added to the wrapped component.
 
 ```js
 import React from 'react'
-import connectFridge from 'fridge-next/connectFridge'
+import { withFridge } from 'fridge-next'
 
 const Footer = ({settings}) =>
   <footer>
-    <p>{settings.content.copyright}</p>
+    <p>{settings.copyright}</p>
   </footer>
 
-export default connectFridge(async ({fridge, props}) => {
+export default withFridge(async ({fridge, props}) => {
   return {
-    settings: await fridge.get('type/settings')
+    settings: await fridge.get('content/settings')
   }
 })(Footer)
 ```
 
+#### Render Function
+
+If HOCs aren't your thing, this is also a `<Fridge>` component which accepts a render function as its child. You can provide a `query` prop with can be a string, array, or a function which must return 1 or more strings of queries to pass to Fridge.
+
+```js
+import { Fridge } from 'fridge-next'
+
+export default ({ id }) =>
+  <Fridge query={`content/team_member/${id}`}>
+    {teamMember =>
+      <div>
+        <h3>{teamMember.name}</h3>
+        <p>{teamMember.bio}</p>
+      </div>
+    }
+  </Fridge>
+```
+
 ### Routes
 
-In order to provide custom/parameterized routing to pages, provide a `routes` hash in `next.config.js`. Keys represent the route and values represent the next.js page path to render. Any route parameters will be passed into the `query` hash in the `getInitialProps` context.
+Use `exportPathMap` from next.js to provide custom routes.
 
 ```js
 module.exports = {
   fridge: {...},
-  routes: {
-    '/:page': '/page',
-    '/blog/:slug': '/blog'
+  exportPathMap: async (fridge, defaultPathMap) => {
+    const members = await fridge.get('content/team_member')
+    for (const member of members) {
+      defaultPathMap[`/team/${member.slug}`] = {page: '/team', query: {id: member.id}}
+    }
+    defaultPathMap
   }
 }
 ```

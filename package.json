@@ -5,9 +5,7 @@
   "main": "./dist/index.js",
   "files": [
     "dist",
-    "app.js",
-    "connectFridge.js",
-    "withFridge.js"
+    "server.js"
   ],
   "bin": {
     "fridge": "./bin/fridge"

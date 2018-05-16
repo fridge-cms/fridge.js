@@ -4,7 +4,7 @@ const { join } = require('path')
 const { spawn } = require('cross-spawn')
 
 const cmd = process.argv[2] || (process.env.NODE_ENV === 'production' ? 'start' : 'dev')
-const bin = join(__dirname, 'fridge-' + cmd + '.js')
+const bin = join(__dirname, `fridge-${cmd}`)
 
 const defaultEnv = cmd === 'dev' ? 'development' : 'production'
 process.env.NODE_ENV = process.env.NODE_ENV || defaultEnv

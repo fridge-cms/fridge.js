@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-const fridge = require('../')
+const fridge = require('../server')
 
 // if we are in static mode,
 // load up the "serve" server

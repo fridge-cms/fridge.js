@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 const { resolve } = require('path')
-const getConfig = require('../config')
+const getConfig = require('../dist/config')
 const parseArgs = require('minimist')
 const buildApp = require('next/dist/server/build')
 const exportApp = require('next/dist/server/export')
