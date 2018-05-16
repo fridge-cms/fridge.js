@@ -1,7 +1,7 @@
-#!/usr/bin/env node
+#! /usr/bin/env node
 
-import { join } from 'path'
-import { spawn } from 'cross-spawn'
+const { join } = require('path')
+const { spawn } = require('cross-spawn')
 
 const cmd = process.argv[2] || (process.env.NODE_ENV === 'production' ? 'start' : 'dev')
 const bin = join(__dirname, 'fridge-' + cmd + '.js')

@@ -1,10 +1,10 @@
-#!/usr/bin/env node
+#! /usr/bin/env node
 
-import { resolve } from 'path'
-import getConfig from '../config'
-import parseArgs from 'minimist'
-import buildApp from 'next/dist/server/build'
-import exportApp from 'next/dist/server/export'
+const { resolve } = require('path')
+const getConfig = require('../config')
+const parseArgs = require('minimist')
+const buildApp = require('next/dist/server/build')
+const exportApp = require('next/dist/server/export')
 
 const argv = parseArgs(process.argv.slice(2))
 const dir = resolve(argv._[0] || '.')
