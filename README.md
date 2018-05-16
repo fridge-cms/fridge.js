@@ -72,14 +72,14 @@ export default withFridge(async ({fridge, props}) => {
 If HOCs aren't your thing, this is also a `<Fridge>` component which accepts a render function as its child. You can provide a `query` prop with can be a string, array, or a function which must return 1 or more strings of queries to pass to Fridge.
 
 ```js
-import { Fridge } from 'fridge-next'
+import { Fridge, HtmlContent } from 'fridge-next'
 
 export default ({ id }) =>
   <Fridge query={`content/team_member/${id}`}>
     {teamMember =>
       <div>
         <h3>{teamMember.name}</h3>
-        <p>{teamMember.bio}</p>
+        <HtmlContent content={teamMember.bio} />
       </div>
     }
   </Fridge>
