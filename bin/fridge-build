@@ -3,12 +3,13 @@
 const { resolve } = require('path')
 const getConfig = require('../dist/config')
 const parseArgs = require('minimist')
-const buildApp = require('next/dist/server/build')
-const exportApp = require('next/dist/server/export')
+const buildApp = require('next/dist/server/build').default
+const exportApp = require('next/dist/server/export').default
+const { PHASE_PRODUCTION_BUILD } = require('next/constants')
 
 const argv = parseArgs(process.argv.slice(2))
 const dir = resolve(argv._[0] || '.')
-const config = getConfig(dir)
+const config = getConfig(dir, PHASE_PRODUCTION_BUILD)
 
 buildApp(dir, config)
 .then(() => config.static
