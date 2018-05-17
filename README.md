@@ -4,13 +4,19 @@
   Build <a href="https://www.fridgecms.com">Fridge</a> powered apps using next.js
 </div>
 
-## How to use
-
-### Setup
+## Installation
 
 ```
 $ npm install --save fridge-next react react-dom
 ```
+
+## Examples
+
+* [Basic Blog](https://github.com/fridge-cms/examples/tree/master/next-basic-blog)
+
+## How to use
+
+### Setup
 
 Add a script to your package.json like this:
 
