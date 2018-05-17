@@ -75,7 +75,7 @@ export default withFridge(async ({fridge, props}) => {
 
 #### Render Function
 
-If HOCs aren't your thing, this is also a `<Fridge>` component which accepts a render function as its child. You can provide a `query` prop with can be a string, array, or a function which must return 1 or more strings of queries to pass to Fridge.
+If HOCs aren't your thing, this is also a `<Fridge>` component which accepts a render function as its child. You can provide a `query` prop with can be a string or array of strings of queries to pass to Fridge.
 
 ```js
 import { Fridge, HtmlContent } from 'fridge-next'
