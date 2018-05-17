@@ -29,7 +29,7 @@ Add a fridge API configuration to `next.config.js`:
 ```js
 module.exports = {
   fridge: {
-    client_id: 'pk_xxxxxxxxxx'
+    token: 'xxxxxxxxxx'
   }
 }
 ```
