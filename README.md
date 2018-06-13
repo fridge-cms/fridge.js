@@ -93,11 +93,14 @@ export default ({ id }) =>
 
 ### Routes
 
-Use `exportPathMap` from next.js to provide custom routes.
+Use `exportPathMap` from next.js to provide custom routes during export. Use `routes` to provide dynamic routing.
 
 ```js
 module.exports = {
   fridge: {...},
+  routes: {
+    '/team/:id': '/team'
+  },
   exportPathMap: async (fridge, defaultPathMap) => {
     const members = await fridge.get('content/team_member')
     for (const member of members) {
