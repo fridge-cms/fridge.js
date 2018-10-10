@@ -3,7 +3,7 @@
 const { resolve } = require('path')
 const getConfig = require('../dist/config')
 const parseArgs = require('minimist')
-const buildApp = require('next/dist/server/build').default
+const buildApp = require('next/dist/build').default
 const exportApp = require('next/dist/server/export').default
 const { PHASE_PRODUCTION_BUILD } = require('next/constants')
 
