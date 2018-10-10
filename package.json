@@ -1,6 +1,6 @@
 {
   "name": "fridge-next",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "Build Fridge apps using next.js",
   "main": "./dist/index.js",
   "files": [
