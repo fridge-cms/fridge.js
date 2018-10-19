@@ -4,7 +4,7 @@ const { resolve } = require('path')
 const getConfig = require('../dist/config')
 const parseArgs = require('minimist')
 const buildApp = require('next/dist/build').default
-const exportApp = require('next/dist/server/export').default
+const exportApp = require('next/dist/export').default
 const { PHASE_PRODUCTION_BUILD } = require('next/constants')
 
 const argv = parseArgs(process.argv.slice(2))
