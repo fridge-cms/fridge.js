@@ -32,13 +32,13 @@
     "fridge": "^2.0.4-beta",
     "hoist-non-react-statics": "^1.2.0",
     "lru-cache": "^4.0.2",
-    "next": "^6.1.2",
+    "next": "^7.0.2",
     "prop-types": "^15.6.0",
     "react-tree-walker": "^4.0.2",
     "serve": "^6.4.4"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.47",
-    "@babel/core": "^7.0.0-beta.47"
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0"
   }
 }
