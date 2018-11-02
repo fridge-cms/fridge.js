@@ -35,7 +35,7 @@
     "next": "^7.0.2",
     "prop-types": "^15.6.0",
     "react-tree-walker": "^4.0.2",
-    "serve": "^6.4.4"
+    "serve": "^10.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
