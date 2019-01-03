@@ -13,6 +13,7 @@ $ npm install --save fridge-next next react react-dom
 ## Examples
 
 * [Basic Blog](https://github.com/fridge-cms/examples/tree/master/next-basic-blog)
+* [Contact Form](https://github.com/fridge-cms/examples/tree/master/next-contact-form)
 
 ## How to use
 
