@@ -100,7 +100,7 @@ export default ({ id }) =>
 
 Provide a `routes` object in `next.config.js`:
 
-> routes: {[path: string]: string | {page: string, query: Object}}
+> `routes: {[path: string]: string | {page: string, query: Object}}`
 
 ```js
 module.exports = {
