@@ -1,4 +1,4 @@
 #! /usr/bin/env node
 
-const fridge = require('../server')
-fridge().start(process.env.PORT || 3000)
+const fridge = require('../server');
+fridge();

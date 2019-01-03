@@ -1,9 +1,4 @@
 #! /usr/bin/env node
 
 const fridge = require('../server')
-
-// if we are in static mode,
-// load up the "serve" server
-// otherwise load up the next.js server
-
-fridge().start(process.env.PORT || 3000)
+fridge();

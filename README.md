@@ -7,7 +7,7 @@
 ## Installation
 
 ```
-$ npm install --save fridge-next react react-dom
+$ npm install --save fridge-next next react react-dom
 ```
 
 ## Examples
@@ -25,7 +25,7 @@ Add a script to your package.json like this:
   "scripts": {
     "dev": "fridge",
     "build": "fridge build",
-    "start": "NODE_ENV=production fridge"
+    "start": "fridge start"
   }
 }
 ```
@@ -33,11 +33,13 @@ Add a script to your package.json like this:
 Add a fridge API configuration to `next.config.js`:
 
 ```js
-module.exports = {
+const withFridge = require('fridge-next/config');
+
+module.exports = withFridge({
   fridge: {
     token: 'xxxxxxxxxx'
   }
-}
+});
 ```
 
 ### Usage

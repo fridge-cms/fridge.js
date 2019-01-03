@@ -6,6 +6,7 @@
   "files": [
     "dist",
     "bin",
+    "config.js",
     "server.js"
   ],
   "bin": {
@@ -28,17 +29,21 @@
   },
   "homepage": "https://github.com/fridge-cms/fridge.js#readme",
   "dependencies": {
+    "compression": "^1.7.3",
     "cross-spawn": "^5.0.1",
+    "fastify": "^1.13.3",
     "fridge": "^2.0.4-beta",
-    "hoist-non-react-statics": "^1.2.0",
+    "hoist-non-react-statics": "^3.2.1",
     "lru-cache": "^4.0.2",
-    "next": "^7.0.2",
     "prop-types": "^15.6.0",
-    "react-tree-walker": "^4.0.2",
-    "serve": "^10.0.2"
+    "react-tree-walker": "^4.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0"
+    "@babel/core": "^7.0.0",
+    "next": "^7.0.2"
+  },
+  "peerDependencies": {
+    "next": ">= 7.0.2"
   }
 }

@@ -1,12 +1,3 @@
 {
-  "presets": [
-    ["next/babel", {
-      "preset-env": {
-        "modules": "commonjs",
-        "targets": {
-          "node": "current"
-        }
-      }
-    }]
-  ]
+  "presets": ["next/babel"]
 }
