@@ -93,25 +93,58 @@ export default ({ id }) =>
   </Fridge>
 ```
 
-### Routes
+### Custom Routes
 
-Use `exportPathMap` from next.js to provide custom routes during export. Use `routes` to provide dynamic routing.
+#### SSR
+
+Provide a `routes` object in `next.config.js`:
+
+> routes: {[path: string]: string | {page: string, query: Object}}
 
 ```js
 module.exports = {
-  fridge: {...},
   routes: {
-    '/team/:id': '/team'
-  },
-  exportPathMap: async (fridge, defaultPathMap) => {
-    const members = await fridge.get('content/team_member')
-    for (const member of members) {
-      defaultPathMap[`/team/${member.slug}`] = {page: '/team', query: {id: member.id}}
-    }
-    defaultPathMap
+    "/blog/:slug": "/blog",
+    "/*": {"page": "/page", "query": {"fallback": "true"}}
   }
 }
 ```
+
+#### Export
+
+Use `exportPathMap` in `next.config.js` to provide custom routes. These routes are intended for use with `fridge export`, however if you specify `useExportRoutes: true` in `next.config.js` then these routes will be added in production:
+
+```js
+module.exports = {
+  exportPathMap: async (fridge, defaultPathMap) => {
+    const members = await fridge.get('content/team_member');
+    for (const member of members) {
+      defaultPathMap[`/team/${member.slug}`] = {page: '/team', query: {id: member.id}};
+    }
+    return defaultPathMap;
+  }
+}
+```
+
+#### Now
+
+Add custom routing to `now.json`:
+
+```json
+{
+  "version": 2,
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/" },
+    { "src": "/blog/(?<slug>[^/]*)", "dest": "/blog?slug=$slug" },
+    { "src": "/team/(?<id>[^/]*)", "dest": "/team?id=$id" }
+  ]
+}
+```
+
+If you are using now v2, you must use next's `BUILD_PHASES` to control when to require `fridge-next`. See this issue for more information: https://github.com/zeit/next.js/issues/5750
 
 ### Next.js
 
