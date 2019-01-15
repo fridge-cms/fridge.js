@@ -44,6 +44,10 @@ const fridge = () => {
           await handle(req.req, reply.res);
           reply.sent = true;
         });
+
+        fastify.addHook("onClose", () => {
+          app.close();
+        });
       }
 
       const routes = await getRoutes(app);
@@ -60,13 +64,11 @@ const fridge = () => {
         });
       }
 
-      try {
+      if (!routes["/*"] && !routes["*"]) {
         fastify.get("/*", async (req, reply) => {
           await handle(req.req, reply.res);
           reply.sent = true;
         });
-      } catch (err) {
-        // allow for a wildcard route at the root
       }
 
       fastify.setNotFoundHandler(async (req, reply) => {
