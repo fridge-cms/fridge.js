@@ -60,10 +60,14 @@ const fridge = () => {
         });
       }
 
-      fastify.get("/*", async (req, reply) => {
-        await handle(req.req, reply.res);
-        reply.sent = true;
-      });
+      try {
+        fastify.get("/*", async (req, reply) => {
+          await handle(req.req, reply.res);
+          reply.sent = true;
+        });
+      } catch (err) {
+        // allow for a wildcard route at the root
+      }
 
       fastify.setNotFoundHandler(async (req, reply) => {
         await app.render404(req.req, reply.res);
