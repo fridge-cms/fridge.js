@@ -77,7 +77,7 @@ const fridge = () => {
       });
 
       fastify.post("/_update", (req, reply) => {
-        ssrCache.reset();
+        // ssrCache.reset();
         reply.statusCode = 200;
         return "";
       });
