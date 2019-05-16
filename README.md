@@ -129,6 +129,8 @@ module.exports = {
 
 #### Now
 
+Set `target: "serverless"` in `next.config.js`.
+
 Add custom routing to `now.json`:
 
 ```json
@@ -145,7 +147,7 @@ Add custom routing to `now.json`:
 }
 ```
 
-If you are using now v2, you must use next's `BUILD_PHASES` to control when to require `fridge-next`. See this issue for more information: https://github.com/zeit/next.js/issues/5750
+> Note: If you are deploying to a serverless environment, you don't need custom SSR routes.
 
 ### Next.js
 
