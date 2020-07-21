@@ -1,4 +1,0 @@
-#! /usr/bin/env node
-
-const fridge = require('../server');
-fridge();

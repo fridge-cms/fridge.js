@@ -1,5 +1,4 @@
 const { DefinePlugin } = require("webpack");
-const Fridge = require("fridge");
 
 module.exports = (nextConfig = {}) => {
   if (!nextConfig.fridge) {
@@ -12,19 +11,12 @@ module.exports = (nextConfig = {}) => {
 
   process.env.FRIDGE_TOKEN = token;
 
-  if (typeof nextConfig.exportPathMap === "function") {
-    const fridge = new Fridge({ token: process.env.FRIDGE_TOKEN });
-    const exportFn = nextConfig.exportPathMap;
-    nextConfig.exportPathMap = defaultPathMap =>
-      exportFn(fridge, defaultPathMap);
-  }
-
   return {
     ...nextConfig,
     webpack(config, options) {
       config.plugins.push(
         new DefinePlugin({
-          "process.env.FRIDGE_TOKEN": JSON.stringify(process.env.FRIDGE_TOKEN)
+          "process.env.FRIDGE_TOKEN": JSON.stringify(process.env.FRIDGE_TOKEN),
         })
       );
 
@@ -33,6 +25,6 @@ module.exports = (nextConfig = {}) => {
       }
 
       return config;
-    }
+    },
   };
 };

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "commonjs",
+    "target": "es2017",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "outDir": "dist"
+  },
+  "include": ["lib", "index.d.ts"],
+  "exclude": ["test"]
+}

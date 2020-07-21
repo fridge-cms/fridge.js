@@ -12,86 +12,71 @@ $ npm install --save fridge-next next react react-dom
 
 ## Examples
 
-* [Basic Blog](https://github.com/fridge-cms/examples/tree/master/next-basic-blog)
-* [Contact Form](https://github.com/fridge-cms/examples/tree/master/next-contact-form)
+- [Basic Blog](https://github.com/fridge-cms/examples/tree/master/next-basic-blog)
+- [Contact Form](https://github.com/fridge-cms/examples/tree/master/next-contact-form)
 
 ## How to use
 
 ### Setup
 
-Add a script to your package.json like this:
-
-```json
-{
-  "scripts": {
-    "dev": "fridge",
-    "build": "fridge build",
-    "start": "fridge start"
-  }
-}
-```
-
 Add a fridge API configuration to `next.config.js`:
 
 ```js
-const withFridge = require('fridge-next/config');
+const withFridge = require("fridge-next/config");
 
 module.exports = withFridge({
   fridge: {
-    token: 'xxxxxxxxxx'
-  }
+    token: "xxxxxxxxxx",
+  },
 });
 ```
 
 ### Usage
 
-Create a custom `_app.js`.
+### getStaticProps
 
 ```js
-// pages/_app.js
+import { fridge } from "fridge-next";
 
-import { FridgeApp } from 'fridge-next'
-export default FridgeApp
+export async function getStaticProps({ params }) {
+  const content = await fridge(`content/${params.id}`);
+
+  return {
+    props: { content },
+  };
+}
 ```
 
-This will provide your page components a `fridge` client in `getInitialProps` context as well as a prop of the component.
-
-#### HOC
-
-There is an HOC to wrap non-page components. `withFridge` accepts a promise function that returns props to be added to the wrapped component.
+#### Hook
 
 ```js
-import React from 'react'
-import { withFridge } from 'fridge-next'
+import React from "react";
+import { useFridge } from "fridge-next";
 
-const Footer = ({settings}) =>
-  <footer>
-    <p>{settings.copyright}</p>
-  </footer>
+const Footer = () => {
+  const { data: settings } = useFridge("content/settings");
 
-export default withFridge(async ({fridge, props}) => {
-  return {
-    settings: await fridge.get('content/settings')
-  }
-})(Footer)
+  return <footer>{!!settings && <p>{settings.copyright}</p>}</footer>;
+};
 ```
 
 #### Render Function
 
-If HOCs aren't your thing, this is also a `<Fridge>` component which accepts a render function as its child. You can provide a `query` prop with can be a string or array of strings of queries to pass to Fridge.
+There is also a `<FridgeContent>` component which accepts a render function as its child. You can provide a `query` prop with can be a string or array of strings of queries to pass to Fridge.
 
 ```js
-import { Fridge, HtmlContent } from 'fridge-next'
+import { FridgeContent, HtmlContent } from "fridge-next";
 
-export default ({ id }) =>
-  <Fridge query={`content/team_member/${id}`}>
-    {teamMember =>
+export default ({ id }) => (
+  <FridgeContent query={`content/team_member/${id}`}>
+    {(teamMember) => (
       <div>
         <h3>{teamMember.name}</h3>
         <HtmlContent content={teamMember.bio} />
       </div>
-    }
-  </Fridge>
+    )}
+  </FridgeContent>
+);
 ```
 
 ### Custom Routes
@@ -106,9 +91,9 @@ Provide a `routes` object in `next.config.js`:
 module.exports = {
   routes: {
     "/blog/:slug": "/blog",
-    "/*": {"page": "/page", "query": {"fallback": "true"}}
-  }
-}
+    "/*": { page: "/page", query: { fallback: "true" } },
+  },
+};
 ```
 
 #### Export
@@ -118,13 +103,16 @@ Use `exportPathMap` in `next.config.js` to provide custom routes. These routes a
 ```js
 module.exports = {
   exportPathMap: async (fridge, defaultPathMap) => {
-    const members = await fridge.get('content/team_member');
+    const members = await fridge.get("content/team_member");
     for (const member of members) {
-      defaultPathMap[`/team/${member.slug}`] = {page: '/team', query: {id: member.id}};
+      defaultPathMap[`/team/${member.slug}`] = {
+        page: "/team",
+        query: { id: member.id },
+      };
     }
     return defaultPathMap;
-  }
-}
+  },
+};
 ```
 
 #### Now
@@ -136,9 +124,7 @@ Add custom routing to `now.json`:
 ```json
 {
   "version": 2,
-  "builds": [
-    { "src": "next.config.js", "use": "@now/next" }
-  ],
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
   "routes": [
     { "src": "/", "dest": "/" },
     { "src": "/blog/(?<slug>[^/]*)", "dest": "/blog?slug=$slug" },
