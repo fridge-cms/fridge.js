@@ -6,17 +6,12 @@ const useFridge = (
   deps: any[] = []
 ) => {
   const hookDeps = Array.isArray(options) ? options : deps;
+  const apiPath = path
+    ? `https://api.fridgecms.com/v2/${(path || "").replace(/^\//, "")}`
+    : undefined;
 
-  if (!path) {
-    return {
-      data: undefined,
-      loading: false,
-      error: false,
-    };
-  }
-
-  return useFetch(
-    `https://api.fridgecms.com/v2/${(path || "").replace(/^\//, "")}`,
+  const hookReturn = useFetch(
+    apiPath,
     {
       headers: {
         authorization: process.env.FRIDGE_TOKEN || "",
@@ -25,6 +20,8 @@ const useFridge = (
     },
     hookDeps
   );
+
+  return hookReturn;
 };
 
 export default useFridge;
