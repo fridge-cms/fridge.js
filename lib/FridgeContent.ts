@@ -1,5 +1,6 @@
-import useFetch from "use-http";
 import { useEffect, useState } from "react";
+import { mutate } from "swr";
+import fridge from "./fridge";
 
 type Props = {
   children: (...args: any) => void;
@@ -9,18 +10,18 @@ type Props = {
 const FridgeContent = ({ children, query }: Props) => {
   const [responses, setResponses] = useState<any[]>([]);
   const queries = Array.isArray(query) ? query : [query];
-  const { get } = useFetch("https://api.fridgecms.com/v2", {
-    headers: {
-      authorization: process.env.FRIDGE_TOKEN || "",
-    },
-  });
 
   useEffect(() => {
     loadContent();
   }, [query]);
 
   async function loadContent() {
-    const responses = await Promise.all(queries.map((query) => get(query)));
+    const responses = await Promise.all(
+      queries.map(async (query) => {
+        const res = await fridge(query);
+        mutate(query, res);
+      })
+    );
     setResponses(responses);
   }
 

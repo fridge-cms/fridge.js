@@ -1,27 +1,8 @@
-import useFetch from "use-http";
+import useSWR from "swr";
+import fridge from "./fridge";
 
-const useFridge = (
-  path: string | null,
-  options: {} | any[],
-  deps: any[] = []
-) => {
-  const hookDeps = Array.isArray(options) ? options : deps;
-  const apiPath = path
-    ? `https://api.fridgecms.com/v2/${(path || "").replace(/^\//, "")}`
-    : undefined;
-
-  const hookReturn = useFetch(
-    apiPath,
-    {
-      headers: {
-        authorization: process.env.FRIDGE_TOKEN || "",
-      },
-      ...((Array.isArray(options) ? null : options) || {}),
-    },
-    hookDeps
-  );
-
-  return hookReturn;
+const useFridge = (path: string | null, options: {}) => {
+  return useSWR(path, fridge, options || {});
 };
 
 export default useFridge;
