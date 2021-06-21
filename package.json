@@ -1,8 +1,9 @@
 {
   "name": "fridge-next",
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "Build Fridge apps using next.js",
   "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "files": [
     "dist",
     "config.js"
@@ -10,7 +11,7 @@
   "scripts": {
     "prepublish": "npm run clean && npm run build",
     "clean": "rm -rf dist/* && mkdir -p dist",
-    "build": "tsc --project ./tsconfig.json",
+    "build": "tsc --project ./tsconfig.json --declaration",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
