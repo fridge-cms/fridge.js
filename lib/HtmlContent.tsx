@@ -1,6 +1,6 @@
 import React from "react";
 
-type Props = {
+type Props = React.ComponentProps<"div"> & {
   content: string;
 };
 export default ({ content = "", ...props }: Props) => (
