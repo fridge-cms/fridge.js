@@ -5,7 +5,9 @@ const createPublicContent = async (
   body: {},
   options?: { token?: string }
 ) => {
-  const { token = process.env.FRIDGE_TOKEN } = options || {};
+  const defaultToken =
+    process.env.FRIDGE_TOKEN || process.env.NEXT_PUBLIC_FRIDGE_TOKEN;
+  const { token = defaultToken } = options || {};
   const client = new Fridge({ token });
 
   const res = await client.post(`public/${contentType}`, body);
