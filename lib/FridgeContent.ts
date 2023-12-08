@@ -20,6 +20,7 @@ const FridgeContent = ({ children, query }: Props) => {
       queries.map(async (query) => {
         const res = await fridge(query);
         mutate(query, res);
+        return res;
       })
     );
     setResponses(responses);

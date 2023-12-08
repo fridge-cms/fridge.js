@@ -2,3 +2,4 @@ node_modules
 npm-debug*
 dist
 *-error.log
+test
