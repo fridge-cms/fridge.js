@@ -1,6 +1,6 @@
 {
   "name": "fridge-next",
-  "version": "9.2.2",
+  "version": "9.2.3",
   "description": "Build Fridge apps using next.js",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -9,7 +9,7 @@
     "config.js"
   ],
   "scripts": {
-    "prepublish": "npm run clean && npm run build",
+    "prepublishOnly": "npm run clean && npm run build",
     "clean": "rm -rf dist/* && mkdir -p dist",
     "build": "tsc --project ./tsconfig.json --declaration",
     "test": "echo \"Error: no test specified\" && exit 1"
